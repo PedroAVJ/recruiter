@@ -25,6 +25,32 @@ A server is a namespace and shared execution pool. A named session on that
 server is the employee. Never create a fourth server, a per-employee
 `LaunchAgent`, or a separate `claude remote-control` supervisor.
 
+### Discover an existing Claude employee
+
+Claude employees do not appear in the Codex task list. Discover them through
+the existing Claude CLI in this order:
+
+1. List the live namespaces with `launchctl list` and identify the matching
+   `com.pedro.claude-remote-control.chat`, `.tradeincode`, or
+   `.avanza-control` service.
+2. Read that service with `launchctl print gui/$(id -u)/<label>` to establish
+   its working directory. From that directory, run `claude --resume` and use
+   the CLI session picker to find the exact visible employee title.
+3. Once the picker provides the selected session's current UUID, resume it
+   non-interactively with `claude --print --output-format json --resume <uuid>`
+   for the requested work. Verify the returned `modelUsage` names the approved
+   backend model.
+
+The visible title and live namespace identify the employee. A session UUID is
+only a transient handle for the current CLI invocation: never store it in this
+plugin, a role contract, or a source file.
+
+### Registered Claude employee
+
+- `🧑‍🔬 Emoji Taxonomist` lives in the Chat namespace. Its scope is selecting
+  exact Unicode RGI human emoji for AI-employee titles; it recommends mappings
+  and does not alter plugins or employee roles on its own.
+
 1. Discover the three live shared services with `launchctl`; do not rely on a
    stale PID or cached session identifier.
 2. Choose the existing server whose namespace owns the employee's work.

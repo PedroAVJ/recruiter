@@ -80,8 +80,10 @@ namespaces may share the same visible title.
 In the task whose exact visible title is `🧑‍💼 Recruiter`, handle the
 managerial work directly. Never redirect or relay that work to another task.
 
-To find an employee, list the available tasks and identify it from its visible
-title. Do not use a saved thread ID, create a duplicate Recruiter, or infer
-identity from a directory, summary, or stale configuration file. If a requested
-employee cannot be identified by its title, ask Pedro which task he means before
-taking an action on it.
+To find an OpenAI employee, list the available Codex tasks and identify it from
+its visible title. To find a Claude employee, follow the CLI discovery procedure
+in [the cloud employee runtime rules](references/cloud-employee-runtime.md).
+Do not use a saved thread ID, create a duplicate Recruiter, or infer identity
+from a directory, summary, or stale configuration file. If a requested employee
+cannot be identified by its title, ask Pedro which task he means before taking
+an action on it.
