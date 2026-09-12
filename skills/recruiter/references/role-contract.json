@@ -29,8 +29,8 @@
       "runtime_guidance": "cloud-employee-runtime.md",
       "decisions": [
         "First classify the primary tasks by verification: machine-verifiable tasks use the OpenAI picker; human-verifiable tasks enter the human-verification modality picker",
-        "For human-verifiable work, text maps to Claude Fable 5.1, audio to Gemini 3.8 Flash, and image to GPT Image 2.5; for machine-verifiable work, choose the lowest sufficient OpenAI model",
-        "Only after the exact model is fixed, use medium reasoning effort when its selected runtime exposes one"
+        "For human-verifiable work, text maps to the approved Claude lineup (currently Claude Fable 5.1), audio to Gemini 3.8 Flash, and image to GPT Image 2.5; for machine-verifiable work, choose the lowest sufficient OpenAI model",
+        "Only after the exact model is fixed, use its provider-documented effort support; the current Fable 5.1 policy is medium and does not automatically apply to another Claude model"
       ],
       "rules": [
         "Do not add recruiter panels, composite scores, seniority mappings, review requirements, or team shape unless Pedro explicitly asks",

@@ -38,14 +38,17 @@ these ordered decisions:
    Machine-verifiable tasks use the OpenAI picker. Human-verifiable tasks enter
    the human-verification modality picker. Use the verification method that
    governs the role's primary work.
-2. For human-verifiable work, select the verification medium: text uses Claude
-   Fable 5.1, audio uses Gemini 3.8 Flash, and image uses GPT Image 2.5. For
-   machine-verifiable work, select the lowest sufficient model from the OpenAI
-   guidance.
+2. For human-verifiable work, select the verification medium: text uses the
+   approved Claude lineup (currently Claude Fable 5.1), audio uses Gemini 3.8
+   Flash, and image uses GPT Image 2.5. For machine-verifiable work, select
+   the lowest sufficient model from the OpenAI guidance.
 3. Only after the exact model is fixed, choose the lowest reliable reasoning
-   effort if the selected runtime exposes one. For the human-verification
-   picker, use `medium` for now. Do not invent an effort for a runtime that
-   does not expose it.
+   effort if the selected runtime exposes one. For a Claude selection, read
+   the retained Anthropic effort and thinking hierarchy: it applies across
+   Claude models and identifies the exact model's supported levels. The
+   current approved Fable 5.1 policy is `medium`; do not generalize it to a
+   future Claude model. Do not invent an effort for a runtime that does not
+   expose it.
 
 Return the model and, when applicable, effort, with one short workload match
 for each decision.

@@ -12,6 +12,12 @@ layers for model fit, effort semantics, and exact model capability. Use that
 embedded copy for ordinary decisions; refresh it when Pedro asks to change the
 model lineup or a capability may have changed.
 
+For Claude staffing, also read the retained [Anthropic effort and thinking
+source hierarchy](anthropic-model-selection.md). It records Anthropic's
+provider-wide effort and thinking documentation plus the per-model check that
+is required when the approved Claude lineup changes. It does not expand the
+current approved lineup by itself.
+
 ## Decision 1: classify the role's primary tasks by verification
 
 Start with what the role will do, not the eventual outcome. Classify the
@@ -33,19 +39,25 @@ primary tasks by the authority that can verify whether they were done well:
 This picker applies only after Decision 1 yields human-verifiable work. It is
 an exact mapping, not a capability or provider ladder:
 
-- **Text verification:** Claude Fable 5.1.
+- **Text verification:** Claude. The current approved text model is Claude
+  Fable 5.1.
 - **Audio verification:** Gemini 3.8 Flash.
 - **Image verification:** GPT Image 2.5.
 
 The verification medium is the form in which a person must judge the role's
-primary work. Do not replace this picker with generic Anthropic or OpenAI model
-selection.
+primary work. Do not replace this picker with generic provider model selection.
+The Claude branch is intentionally ready for more than one approved Claude
+model, but Fable 5.1 is the only approved choice until Pedro changes the
+lineup.
 
 ## Decision 2: choose the model
 
 For machine-verifiable work, choose the lowest sufficient OpenAI tier below.
-For human-verifiable work, the modality picker has already fixed the exact
-model.
+For human-verifiable audio and image work, the modality picker has already
+fixed the exact model. For human-verifiable text work, choose from the approved
+Claude lineup. At present that has one member: Claude Fable 5.1. If Pedro adds
+another Claude model, use the retained Anthropic hierarchy to compare the
+candidate's current support and effort guidance before selecting it.
 
 ### OpenAI model guidance
 
@@ -84,14 +96,19 @@ In this harness, GPT-6 Astra and GPT-5.6 Sol, Terra, and Luna use `low` through
 
 ### Human-verification picker effort guidance
 
-- Claude Fable 5.1: `medium`.
+- Claude Fable 5.1: `medium` by Pedro's current operating policy. Anthropic's
+  [Effort documentation](anthropic-model-selection.md) remains the authority
+  for the model's supported levels and provider recommendations; do not treat
+  this Fable-specific choice as a universal Claude default.
 - Gemini 3.8 Flash: the current native Gemini route does not expose an exact
   reasoning-effort setting. Report effort as not configured; do not invent one.
 - GPT Image 2.5: image-quality settings are not reasoning effort. Report effort
   as not applicable.
 
-Use `medium` for every human-verification picker model whose selected runtime
-exposes a reasoning-effort control, until Pedro changes this policy.
+For a newly approved Claude model, select only a level that Anthropic currently
+documents as supported for that exact model, then follow the recorded
+provider/model guidance and Pedro's applicable operating policy. Do not copy
+Fable 5.1's `medium` setting to a different Claude model by default.
 
 ## Decision output
 
