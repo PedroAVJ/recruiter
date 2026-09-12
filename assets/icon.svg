@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Hiring Manager">
+  <rect width="256" height="256" rx="56" fill="#4F46E5"/>
+  <circle cx="128" cy="82" r="38" fill="#EEF2FF"/>
+  <path d="M55 215c5-49 32-78 73-78s68 29 73 78" fill="#C7D2FE"/>
+  <path d="M104 142l24 30 24-30 18 13-42 50-42-50z" fill="#312E81"/>
+</svg>

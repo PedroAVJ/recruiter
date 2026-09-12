@@ -1,0 +1,29 @@
+{
+  "name": "hiring-manager",
+  "version": "0.2.0",
+  "description": "Pedro's dedicated Hiring Manager for staffing decisions and AI-employee review.",
+  "author": {
+    "name": "Local developer"
+  },
+  "repository": "https://github.com/PedroAVJ/hiring-manager",
+  "license": "MIT",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "\ud83e\uddd1\u200d\ud83d\udcbc Hiring Manager",
+    "shortDescription": "Approve staffing decisions and review AI employees.",
+    "longDescription": "A dedicated manager who makes staffing decisions directly. It owns job design and AI-employee performance review.",
+    "developerName": "Local developer",
+    "category": "Productivity",
+    "brandColor": "#4F46E5",
+    "composerIcon": "./assets/icon.svg",
+    "logo": "./assets/icon.svg",
+    "capabilities": [
+      "Interactive"
+    ],
+    "defaultPrompt": [
+      "Review this staffing recommendation.",
+      "Design an AI employee role.",
+      "Review this AI employee's performance."
+    ]
+  }
+}
