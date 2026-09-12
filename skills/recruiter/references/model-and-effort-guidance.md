@@ -6,10 +6,11 @@ model, and effort are three separate decisions, made in order. Do not infer any
 of them from a job title, seniority, prestige, or the mere importance of the
 result.
 
-For OpenAI staffing, also read the retained [OpenAI model-selection
-sources](openai-model-selection.md). It contains the approved user-facing
-guidance and its two source links. Use that embedded copy for ordinary
-decisions; refresh it only when Pedro asks to change the model lineup.
+For OpenAI staffing, also read the retained [OpenAI model and effort source
+hierarchy](openai-model-selection.md). It records the official developer-doc
+layers for model fit, effort semantics, and exact model capability. Use that
+embedded copy for ordinary decisions; refresh it when Pedro asks to change the
+model lineup or a capability may have changed.
 
 ## Decision 1: classify the role's primary tasks by verification
 
@@ -74,7 +75,9 @@ that reliably handles the work.
 - `max`: the most complex work, only when it beats `xhigh` in evaluation.
 
 GPT-6 Astra supports `low` through `max`, but not `none`. GPT-5.6 Sol, Terra,
-and Luna support `none` through `max`.
+and Luna support `none` through `max`. Codex-Spark's live preview capability is
+`low`, `medium`, `high`, and `xhigh`; do not offer `none` or `max` for Spark.
+Verify this preview capability at the time of a Spark hire.
 
 ### Anthropic effort guidance
 

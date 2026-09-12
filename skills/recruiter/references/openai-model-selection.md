@@ -1,50 +1,64 @@
-# OpenAI model-selection sources
+# OpenAI model and effort source hierarchy
 
-Last reviewed: 2026-09-12. This is the retained, user-facing source copy for
-choosing OpenAI models in Recruiter staffing decisions. It supplements, but
-does not replace, the verification-first provider decision in
+Last reviewed: 2026-09-12. This retained source copy governs OpenAI portions
+of Recruiter staffing decisions. It supplements, but does not replace, the
+verification-first provider decision in
 [model-and-effort-guidance.md](model-and-effort-guidance.md).
 
-## 1. Primary Work and Codex selection guide
+Use the following official OpenAI developer-documentation hierarchy. Do not
+treat Help Center picker copy as durable model-selection authority.
 
-Source: [Managing usage with GPT-6 Astra in Work and Codex](https://help.openai.com/en/articles/20001516-managing-usage-with-gpt-6-astra-in-work-and-codex)
+## 1. Model-family guidance
 
-Use this as the primary guide for the normal OpenAI picker:
+Source: [Model guidance](https://developers.openai.com/api/docs/guides/latest-model)
 
-- **GPT-6 Astra:** especially demanding coding, research, analysis, and
-  unfamiliar or complex problem-solving.
-- **GPT-5.6 Sol:** a capability-and-efficiency balance for coding, research,
-  and professional work.
-- **GPT-5.6 Terra:** everyday work that balances speed, capability, and cost;
-  for example routine code changes or document analysis.
-- **GPT-5.6 Luna:** focused or repetitive work where speed and economy matter;
-  for example extraction, categorization, or short edits.
+Use the selected family tab or query parameter (for example,
+`?model=gpt-5.6` or `?model=gpt-6-astra`) to understand the model's intended
+workload and family-specific behavior. For ordinary current OpenAI staffing:
 
-Choose reasoning separately after selecting the model: lower effort when a
-faster response or lower usage is sufficient, medium for a balance, and higher
-effort for a difficult problem that demonstrably benefits from deeper analysis.
-Fast mode provides faster responses while using more allowance; it does not
-change the selected model's intelligence.
+- **GPT-6 Astra:** the hardest end-to-end reasoning and coding work.
+- **GPT-5.6 Sol:** complex professional work.
+- **GPT-5.6 Terra:** a balance of intelligence and cost.
+- **GPT-5.6 Luna:** cost-sensitive, high-volume work.
 
-## 2. Codex-Spark selection guide
+This source decides the workload fit. It does not by itself make an effort
+level valid for every model.
 
-Source: [Introducing GPT-5.3-Codex-Spark](https://openai.com/index/introducing-gpt-5-3-codex-spark/)
+## 2. Reasoning-effort semantics
 
-Use this guide only when considering **GPT-5.3-Codex-Spark**. It is a
-Codex-only research preview optimized for near-instant, interactive coding:
-small targeted edits, reshaping logic, and refining interfaces while the user
-iterates in real time. Its default style is lightweight and it does not run
-tests unless explicitly asked.
+Source: [Reasoning models](https://developers.openai.com/api/docs/guides/reasoning)
 
-Choose Spark when latency and a tight human-in-the-loop coding loop are the
-primary requirement. Do not choose it as the default for autonomous,
-verification-heavy, long-running, or API-backed work merely because it is
-fast.
+After fixing a model, use this guide for the meaning of `none`, `minimal`,
+`low`, `medium`, `high`, `xhigh`, and `max`. Choose the lowest level whose
+quality is reliable for the role; do not infer effort from job title,
+seniority, or the importance of the result.
+
+## 3. Exact capability and availability
+
+Source: [Model catalog and model cards](https://developers.openai.com/api/docs/models)
+
+Before a hire, check the selected model card or catalog for its currently
+supported effort values and relevant availability. The model-specific capability
+is authoritative when it differs from the generic effort guide. For example,
+GPT-6 Astra does not support `none`; GPT-5.6 Sol, Terra, and Luna currently
+support `none`, `low`, `medium`, `high`, `xhigh`, and `max`.
+
+## Codex-Spark
+
+GPT-5.3-Codex-Spark is a Codex runtime preview rather than a model listed in the
+developer API catalog. Use it only for latency-first, tightly interactive coding
+where immediate iteration matters more than autonomous thoroughness. Its purpose
+is described in [Introducing GPT-5.3-Codex-Spark](https://openai.com/index/introducing-gpt-5-3-codex-spark/), but that announcement is not part of the
+selection hierarchy above.
+
+For Spark, use the live Codex model capability at hire time. At this review it
+allows `low`, `medium`, `high`, and `xhigh`; it does not allow `none` or `max`.
+Because it is a preview runtime, do not infer future support from the API
+catalog or assume that a plan's UI exposes every allowed value.
 
 ## Maintenance rule
 
-These two URLs are the approved user-facing OpenAI sources for model selection.
-For ordinary staffing decisions, follow this retained guidance rather than
-browsing the API model catalog. If Pedro asks to change the OpenAI model lineup,
-refresh both the retained summary and the source links before making further
-recommendations.
+For ordinary staffing decisions, use this retained hierarchy. When Pedro asks
+to change the model lineup or a capability may have changed, refresh the three
+official developer-documentation layers and the live Codex capability for
+preview-only models before making a recommendation.
