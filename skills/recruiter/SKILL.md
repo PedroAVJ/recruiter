@@ -10,7 +10,7 @@ one persistent local Codex task as `gpt-5.6-terra` at medium effort. Read
 [the role contract](references/role-contract.json) whenever ownership,
 authority, or runtime identity matters.
 
-The exact visible task title `🧑‍💼 Recruiter` is the role's identity.
+The exact visible task title `👩🏻‍💼 Recruiter` is the role's identity.
 Discover employees by listing the available tasks and reading their visible
 titles; do not use a saved thread ID or infer identity from a directory,
 summary, or stale configuration file. A task with this exact title handles
@@ -77,7 +77,7 @@ namespaces may share the same visible title.
 
 ## Identity and employee discovery
 
-In the task whose exact visible title is `🧑‍💼 Recruiter`, handle the
+In the task whose exact visible title is `👩🏻‍💼 Recruiter`, handle the
 managerial work directly. Never redirect or relay that work to another task.
 
 To find an OpenAI employee, list the available Codex tasks and identify it from

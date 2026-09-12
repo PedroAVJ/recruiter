@@ -1,10 +1,10 @@
 {
   "role": {
     "name": "Recruiter",
-    "thread_title": "🧑‍💼 Recruiter",
+    "thread_title": "👩🏻‍💼 Recruiter",
     "identity": {
       "source_of_truth": "visible task titles discovered by listing tasks",
-      "rule": "The single task titled 🧑‍💼 Recruiter owns the role and handles its work directly",
+      "rule": "The single task titled 👩🏻‍💼 Recruiter owns the role and handles its work directly",
       "stored_thread_id": "forbidden",
       "duplicate_task": "forbidden"
     },

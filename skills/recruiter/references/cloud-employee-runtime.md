@@ -47,9 +47,10 @@ plugin, a role contract, or a source file.
 
 ### Registered Claude employee
 
-- `🧑‍🔬 Emoji Taxonomist` lives in the Chat namespace. Its scope is selecting
-  exact Unicode RGI human emoji for AI-employee titles; it recommends mappings
-  and does not alter plugins or employee roles on its own.
+- `👨🏻‍🔬 Lexical Taxonomist` lives in the Chat namespace. Its scope is maintaining
+  terminology and lexical taxonomies, including exact Unicode RGI human emoji
+  for AI-employee titles; it recommends mappings and does not alter plugins or
+  employee roles on its own.
 
 1. Discover the three live shared services with `launchctl`; do not rely on a
    stale PID or cached session identifier.
