@@ -1,17 +1,17 @@
 {
-  "name": "hiring-manager",
-  "version": "0.3.0",
-  "description": "Pedro's dedicated Hiring Manager for two-step model and reasoning-effort decisions.",
+  "name": "recruiter",
+  "version": "0.4.0",
+  "description": "Pedro's dedicated Recruiter for two-step model and reasoning-effort decisions.",
   "author": {
     "name": "Local developer"
   },
-  "repository": "https://github.com/PedroAVJ/hiring-manager",
+  "repository": "https://github.com/PedroAVJ/recruiter",
   "license": "MIT",
   "skills": "./skills/",
   "interface": {
-    "displayName": "🧑‍⚖️ Hiring Manager",
+    "displayName": "🧑‍💼 Recruiter",
     "shortDescription": "Choose the model, then choose its reasoning effort.",
-    "longDescription": "A dedicated manager that staffs AI work with two ordered decisions: the lowest sufficient model, then the lowest reliable reasoning effort for that model.",
+    "longDescription": "A dedicated recruiter that staffs AI work with two ordered decisions: the lowest sufficient model, then the lowest reliable reasoning effort for that model.",
     "developerName": "Local developer",
     "category": "Productivity",
     "brandColor": "#4F46E5",

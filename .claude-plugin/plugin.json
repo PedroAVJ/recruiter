@@ -1,11 +1,11 @@
 {
-  "name": "hiring-manager",
-  "version": "0.3.0",
-  "description": "Pedro's dedicated Hiring Manager for two-step model and reasoning-effort decisions.",
+  "name": "recruiter",
+  "version": "0.4.0",
+  "description": "Pedro's dedicated Recruiter for two-step model and reasoning-effort decisions.",
   "author": {
     "name": "Local developer"
   },
-  "repository": "https://github.com/PedroAVJ/hiring-manager",
+  "repository": "https://github.com/PedroAVJ/recruiter",
   "license": "MIT",
   "skills": "./skills/"
 }

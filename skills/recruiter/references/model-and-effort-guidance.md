@@ -86,12 +86,12 @@ Recruiter consultation is optional, never a prerequisite. Do not add a panel,
 composite score, seniority rubric, review requirement, or team shape unless
 Pedro explicitly asks for it.
 
-## Hiring Manager runtime
+## Recruiter runtime
 
-Decision 1: Hiring Manager work is a bounded, structured comparison, so OpenAI
+Decision 1: Recruiter work is a bounded, structured comparison, so OpenAI
 fits; Terra is the sufficient intelligence/cost tier.
 
 Decision 2: the persistent role also handles occasional multi-constraint job
 design and performance review, so Terra's `medium` effort is sufficient.
 
-The Hiring Manager runtime is `gpt-5.6-terra` at `medium` effort.
+The Recruiter runtime is `gpt-5.6-terra` at `medium` effort.
