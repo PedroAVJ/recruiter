@@ -28,10 +28,10 @@ level valid for every model.
 
 Source: [Reasoning models](https://developers.openai.com/api/docs/guides/reasoning)
 
-After fixing a model, use this guide for the meaning of `none`, `minimal`,
-`low`, `medium`, `high`, `xhigh`, and `max`. Choose the lowest level whose
-quality is reliable for the role; do not infer effort from job title,
-seniority, or the importance of the result.
+After fixing a model, use this guide for the meaning of the available effort
+levels. In this harness, Recruiter considers `low`, `medium`, `high`, `xhigh`,
+and `max`. Choose the lowest level whose quality is reliable for the role; do
+not infer effort from job title, seniority, or the importance of the result.
 
 ## 3. Exact capability and availability
 
@@ -39,9 +39,9 @@ Source: [Model catalog and model cards](https://developers.openai.com/api/docs/m
 
 Before a hire, check the selected model card or catalog for its currently
 supported effort values and relevant availability. The model-specific capability
-is authoritative when it differs from the generic effort guide. For example,
-GPT-6 Astra does not support `none`; GPT-5.6 Sol, Terra, and Luna currently
-support `none`, `low`, `medium`, `high`, `xhigh`, and `max`.
+is authoritative when it differs from the generic effort guide. In this
+harness, GPT-6 Astra, GPT-5.6 Sol, Terra, and Luna use the available range from
+`low` through `max`.
 
 ## Codex-Spark
 
@@ -52,8 +52,8 @@ is described in [Introducing GPT-5.3-Codex-Spark](https://openai.com/index/intro
 selection hierarchy above.
 
 For Spark, use the live Codex model capability at hire time. At this review it
-allows `low`, `medium`, `high`, and `xhigh`; it does not allow `none` or `max`.
-Because it is a preview runtime, do not infer future support from the API
+allows `low`, `medium`, `high`, and `xhigh`. Because it is a preview runtime,
+do not infer future support from the API
 catalog or assume that a plan's UI exposes every allowed value.
 
 ## Maintenance rule

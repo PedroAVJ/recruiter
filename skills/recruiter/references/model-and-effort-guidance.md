@@ -63,7 +63,6 @@ that reliably handles the work.
 
 ### OpenAI effort guidance
 
-- `none`: latency-critical work with no meaningful reasoning or chained tools.
 - `low`: efficient tool use, planning, search, drafting, and ordinary multistep
   decisions.
 - `medium`: independent completion and verification, complex reasoning, or
@@ -74,10 +73,9 @@ that reliably handles the work.
   quality benefit.
 - `max`: the most complex work, only when it beats `xhigh` in evaluation.
 
-GPT-6 Astra supports `low` through `max`, but not `none`. GPT-5.6 Sol, Terra,
-and Luna support `none` through `max`. Codex-Spark's live preview capability is
-`low`, `medium`, `high`, and `xhigh`; do not offer `none` or `max` for Spark.
-Verify this preview capability at the time of a Spark hire.
+In this harness, GPT-6 Astra and GPT-5.6 Sol, Terra, and Luna use `low` through
+`max`. Codex-Spark's live preview capability is `low`, `medium`, `high`, and
+`xhigh`. Verify this preview capability at the time of a Spark hire.
 
 ### Anthropic effort guidance
 
