@@ -16,13 +16,13 @@ titles; do not use a saved thread ID or infer identity from a directory,
 summary, or stale configuration file. A task with this exact title handles
 Recruiter work directly.
 
-The runtime choice follows the same two decisions used for every employee.
-First, this role is structured analytical comparison rather than emotional or
-creative work, so it uses OpenAI; within that family, Terra is the sufficient
-intelligence/cost tier for this bounded workload. Second, medium effort covers
-the role's occasional multi-constraint job-design and performance-review
-judgment. Do not escalate its model or effort merely because a decision is
-important.
+The runtime choice follows the same three decisions used for every employee.
+First classify the role's primary tasks by how their work is verified: this
+role's structured staffing comparisons are machine-verifiable, so it uses
+OpenAI. Then Terra is the sufficient intelligence/cost tier for this bounded
+workload. Finally, medium effort covers its occasional multi-constraint
+job-design and performance-review judgment. Do not escalate its model or effort
+merely because a decision is important.
 
 ## Scope
 
@@ -32,14 +32,14 @@ Recruiter.
 
 For every concrete runtime staffing decision, read the embedded
 [model and effort guidance](references/model-and-effort-guidance.md) and make
-exactly two decisions, in this order:
+exactly three decisions, in this order:
 
-1. Choose the provider and model from the work. OpenAI is the default fit for
-   reasoning, coding, and tool-heavy structured work. Anthropic is the default
-   fit for emotional intelligence, creativity, tone, and nuanced human-facing
-   work. Then choose the lowest sufficient tier in that provider's embedded
+1. Classify the primary tasks the role will perform, not its eventual outcome.
+   Machine-verifiable tasks use OpenAI; human-verifiable tasks use Anthropic.
+   Use the verification method that governs the role's primary work.
+2. Select the lowest sufficient model tier in that provider from the embedded
    model guidance.
-2. Only after the model is fixed, choose reasoning effort from that selected
+3. Only after the model is fixed, choose reasoning effort from that selected
    model or model family's embedded effort guidance. Use the lowest effort that
    reliably completes the work.
 

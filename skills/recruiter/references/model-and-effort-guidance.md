@@ -1,22 +1,29 @@
 # Model and effort selection guidance
 
 This is the operative, embedded guidance for staffing decisions. Do not browse
-for model guidance while making an ordinary staffing decision. Model and effort
-are two separate decisions, made in order. Do not infer either from a job title,
-seniority, prestige, or the mere importance of the result.
+for model guidance while making an ordinary staffing decision. Verification,
+model, and effort are three separate decisions, made in order. Do not infer any
+of them from a job title, seniority, prestige, or the mere importance of the
+result.
 
-## Decision 1: choose the provider and model
+## Decision 1: classify the role's primary tasks by verification
 
-Start with the dominant kind of work:
+Start with what the role will do, not the eventual outcome. Classify the
+primary tasks by the authority that can verify whether they were done well:
 
-- Choose OpenAI for analytical reasoning, coding, precise tool use, research,
-  and structured multistep execution.
-- Choose Anthropic for emotional intelligence, interpersonal nuance,
-  creativity, tone, writing, and subjective human-facing judgment.
-- For mixed work, choose by the primary output and the costliest likely failure.
-  Do not compensate for uncertainty by jumping to the strongest model.
+- **Machine-verifiable tasks** have a reproducible check: tests, exact data,
+  deterministic tool behavior, formal constraints, or a factual/structured
+  acceptance rule. Choose **OpenAI**.
+- **Human-verifiable tasks** are primarily judged by people: interpersonal
+  judgment, emotional intelligence, tone, creative taste, or whether the work
+  lands with its intended readers. Choose **Anthropic**.
+- For mixed roles, choose by the verification method that governs the primary
+  tasks. If distinct task classes merit separate employees, propose narrower
+  roles; do not silently split, hire, or route work.
 
-Then select the lowest sufficient tier inside the chosen provider:
+## Decision 2: choose the model tier
+
+Within the provider selected above, choose the lowest sufficient tier:
 
 ### OpenAI model guidance
 
@@ -39,7 +46,7 @@ Then select the lowest sufficient tier inside the chosen provider:
 
 Stop after choosing one exact model. Do not choose effort yet.
 
-## Decision 2: choose reasoning effort
+## Decision 3: choose reasoning effort
 
 Now consult only the selected model or family below and choose the lowest level
 that reliably handles the work.
@@ -88,10 +95,13 @@ Pedro explicitly asks for it.
 
 ## Recruiter runtime
 
-Decision 1: Recruiter work is a bounded, structured comparison, so OpenAI
-fits; Terra is the sufficient intelligence/cost tier.
+Decision 1: Recruiter work is a bounded, structured comparison whose staffing
+recommendations can be checked against stated task criteria, so it is
+machine-verifiable and uses OpenAI.
 
-Decision 2: the persistent role also handles occasional multi-constraint job
+Decision 2: Terra is the sufficient intelligence/cost tier.
+
+Decision 3: the persistent role also handles occasional multi-constraint job
 design and performance review, so Terra's `medium` effort is sufficient.
 
 The Recruiter runtime is `gpt-5.6-terra` at `medium` effort.

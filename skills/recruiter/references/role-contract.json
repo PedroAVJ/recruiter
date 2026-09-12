@@ -14,7 +14,7 @@
       "reasoning_effort": "medium",
       "delegation": "solo",
       "selection_basis": {
-        "model": "Structured analytical comparison fits OpenAI; GPT-5.6 Terra is the sufficient intelligence and cost tier",
+        "model": "Structured staffing comparison is machine-verifiable, so it fits OpenAI; GPT-5.6 Terra is the sufficient intelligence and cost tier",
         "reasoning_effort": "Medium covers occasional multi-constraint job design and performance review",
         "excluded_workload": "The role does not perform the hardest reasoning, multihour autonomous implementation, or deep research"
       }
@@ -28,7 +28,8 @@
       "guidance": "model-and-effort-guidance.md",
       "runtime_guidance": "cloud-employee-runtime.md",
       "decisions": [
-        "First choose the provider and lowest sufficient model from the embedded model guidance: OpenAI for reasoning, coding, and tool-heavy structured work; Anthropic for emotions, creativity, tone, and nuanced human-facing work",
+        "First classify the primary tasks by verification: machine-verifiable tasks use OpenAI; human-verifiable tasks use Anthropic",
+        "Then choose the lowest sufficient model from the selected provider's embedded model guidance",
         "Only after the model is fixed, choose the lowest reliable reasoning effort from that model or model family's embedded effort guidance"
       ],
       "rules": [
