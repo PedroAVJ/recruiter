@@ -1,6 +1,6 @@
 {
   "name": "recruiter",
-  "version": "0.5.3",
+  "version": "0.6.0",
   "description": "Pedro's dedicated Recruiter for task verification, model, and reasoning-effort decisions.",
   "author": {
     "name": "Local developer"

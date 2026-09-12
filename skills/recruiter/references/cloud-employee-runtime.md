@@ -3,17 +3,37 @@
 The employee's chosen provider determines its execution surface. A visible
 employee is not required to be a native Codex task.
 
-## OpenAI employees
+## OpenAI general-purpose employees
 
 Create a Codex task with the approved OpenAI model and reasoning effort. Use
 the exact visible employee title as the task title. Read back the created task's
 model, effort, and title before calling the hire complete.
+
+## GPT Image 2.5 work
+
+GPT Image 2.5 is an image-generation runtime, not a Codex task model or a
+conversational employee. Use an image-generation surface only when it can
+establish the selected GPT Image 2.5 identity. The current Codex image tool
+does not expose a model selector, so it cannot establish that identity on its
+own; report that limitation rather than claiming an exact model.
+
+## Gemini employees
+
+Run Gemini employees through the installed native Gemini route, not a Codex
+task or a Claude session. Require an explicit `gemini-3.8-flash` selection and
+final response usage metadata that confirms the same model; reject any fallback
+or mixed-model run. The current native route does not expose exact reasoning
+effort, so do not create an effort-bound Gemini role or report an invented
+effort.
 
 ## Claude employees
 
 Run Claude employees through Claude Remote Control, which exposes local Claude
 Code sessions to claude.ai/code and the Claude mobile app while inference runs
 on the selected Anthropic cloud model.
+
+For a Claude Fable 5.1 employee selected by the human text-verification picker,
+pin `medium` reasoning effort.
 
 Exactly three shared Remote Control servers provide the persistent namespaces:
 

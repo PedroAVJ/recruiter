@@ -2,9 +2,9 @@
 
 This is the operative, embedded guidance for staffing decisions. Do not browse
 for model guidance while making an ordinary staffing decision. Verification,
-model, and effort are three separate decisions, made in order. Do not infer any
-of them from a job title, seniority, prestige, or the mere importance of the
-result.
+human-verification modality where applicable, model, and effort are separate
+decisions, made in order. Do not infer any of them from a job title, seniority,
+prestige, or the mere importance of the result.
 
 For OpenAI staffing, also read the retained [OpenAI model and effort source
 hierarchy](openai-model-selection.md). It records the official developer-doc
@@ -22,14 +22,30 @@ primary tasks by the authority that can verify whether they were done well:
   acceptance rule. Choose **OpenAI**.
 - **Human-verifiable tasks** are primarily judged by people: interpersonal
   judgment, emotional intelligence, tone, creative taste, or whether the work
-  lands with its intended readers. Choose **Anthropic**.
+  lands with its intended readers. Continue to the human-verification modality
+  picker below.
 - For mixed roles, choose by the verification method that governs the primary
   tasks. If distinct task classes merit separate employees, propose narrower
   roles; do not silently split, hire, or route work.
 
-## Decision 2: choose the model tier
+## Human-verification modality picker
 
-Within the provider selected above, choose the lowest sufficient tier:
+This picker applies only after Decision 1 yields human-verifiable work. It is
+an exact mapping, not a capability or provider ladder:
+
+- **Text verification:** Claude Fable 5.1.
+- **Audio verification:** Gemini 3.8 Flash.
+- **Image verification:** GPT Image 2.5.
+
+The verification medium is the form in which a person must judge the role's
+primary work. Do not replace this picker with generic Anthropic or OpenAI model
+selection.
+
+## Decision 2: choose the model
+
+For machine-verifiable work, choose the lowest sufficient OpenAI tier below.
+For human-verifiable work, the modality picker has already fixed the exact
+model.
 
 ### OpenAI model guidance
 
@@ -42,17 +58,6 @@ Within the provider selected above, choose the lowest sufficient tier:
   small targeted edits. It is a Codex research preview, not an API runtime;
   use it only when immediate iteration matters more than autonomous
   thoroughness and explicit verification.
-
-### Anthropic model guidance
-
-- Claude Fable 5.1: the most demanding reasoning and long-horizon agentic work,
-  especially when Opus at higher effort is insufficient.
-- Claude Opus 5: capability-first complex, nuanced, accuracy-sensitive, or
-  autonomous work.
-- Claude Sonnet 5: everyday creative, writing, coding, agent, and professional
-  work that benefits from a speed/intelligence balance.
-- Claude Haiku 4.5: lowest-latency, lowest-price, high-volume straightforward
-  work.
 
 Stop after choosing one exact model. Do not choose effort yet.
 
@@ -77,19 +82,16 @@ In this harness, GPT-6 Astra and GPT-5.6 Sol, Terra, and Luna use `low` through
 `max`. Codex-Spark's live preview capability is `low`, `medium`, `high`, and
 `xhigh`. Verify this preview capability at the time of a Spark hire.
 
-### Anthropic effort guidance
+### Human-verification picker effort guidance
 
-- Claude Fable 5.1: `high` by default; `xhigh` or `max` for the most
-  capability-sensitive agentic or coding work; `medium` or `low` when the work
-  is routine or latency-sensitive and quality holds.
-- Claude Opus 5: `high` by default; `xhigh` for demanding coding or agentic
-  work; `max` only when unconstrained token use is justified; `medium` or `low`
-  when quality holds.
-- Claude Sonnet 5: `high` by default; `xhigh` for its hardest coding or agentic
-  work; `medium` to reduce cost; `low` for high-volume or latency-sensitive
-  chat; `max` only for absolute capability.
-- Claude Haiku 4.5: no effort parameter. Report effort as unsupported; do not
-  relabel extended thinking as effort.
+- Claude Fable 5.1: `medium`.
+- Gemini 3.8 Flash: the current native Gemini route does not expose an exact
+  reasoning-effort setting. Report effort as not configured; do not invent one.
+- GPT Image 2.5: image-quality settings are not reasoning effort. Report effort
+  as not applicable.
+
+Use `medium` for every human-verification picker model whose selected runtime
+exposes a reasoning-effort control, until Pedro changes this policy.
 
 ## Decision output
 
@@ -97,7 +99,9 @@ Return only what the request needs. For a runtime recommendation, the minimum
 complete answer is:
 
 - `Model: <provider and exact model>` — one short workload match.
-- `Reasoning effort: <level>` — one short match from that model's guidance.
+- `Reasoning effort: <level>` — one short match from that model's guidance,
+  when the selected runtime exposes an effort setting. Otherwise report why it
+  is not configured or not applicable.
 
 Recruiter consultation is optional, never a prerequisite. Do not add a panel,
 composite score, seniority rubric, review requirement, or team shape unless

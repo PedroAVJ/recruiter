@@ -28,9 +28,9 @@
       "guidance": "model-and-effort-guidance.md",
       "runtime_guidance": "cloud-employee-runtime.md",
       "decisions": [
-        "First classify the primary tasks by verification: machine-verifiable tasks use OpenAI; human-verifiable tasks use Anthropic",
-        "Then choose the lowest sufficient model from the selected provider's embedded model guidance",
-        "Only after the model is fixed, choose the lowest reliable reasoning effort from that model or model family's embedded effort guidance"
+        "First classify the primary tasks by verification: machine-verifiable tasks use the OpenAI picker; human-verifiable tasks enter the human-verification modality picker",
+        "For human-verifiable work, text maps to Claude Fable 5.1, audio to Gemini 3.8 Flash, and image to GPT Image 2.5; for machine-verifiable work, choose the lowest sufficient OpenAI model",
+        "Only after the exact model is fixed, use medium reasoning effort when its selected runtime exposes one"
       ],
       "rules": [
         "Do not add recruiter panels, composite scores, seniority mappings, review requirements, or team shape unless Pedro explicitly asks",
