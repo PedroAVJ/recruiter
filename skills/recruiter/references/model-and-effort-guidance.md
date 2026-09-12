@@ -6,6 +6,11 @@ model, and effort are three separate decisions, made in order. Do not infer any
 of them from a job title, seniority, prestige, or the mere importance of the
 result.
 
+For OpenAI staffing, also read the retained [OpenAI model-selection
+sources](openai-model-selection.md). It contains the approved user-facing
+guidance and its two source links. Use that embedded copy for ordinary
+decisions; refresh it only when Pedro asks to change the model lineup.
+
 ## Decision 1: classify the role's primary tasks by verification
 
 Start with what the role will do, not the eventual outcome. Classify the
@@ -32,6 +37,10 @@ Within the provider selected above, choose the lowest sufficient tier:
 - GPT-5.6 Sol: complex professional work.
 - GPT-5.6 Terra: ordinary work that should balance intelligence and cost.
 - GPT-5.6 Luna: cost-sensitive, high-volume, straightforward work.
+- GPT-5.3-Codex-Spark: latency-first, real-time, interactive coding with
+  small targeted edits. It is a Codex research preview, not an API runtime;
+  use it only when immediate iteration matters more than autonomous
+  thoroughness and explicit verification.
 
 ### Anthropic model guidance
 
