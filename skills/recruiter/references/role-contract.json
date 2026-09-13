@@ -38,6 +38,8 @@
         "Treat embedded guidance as operative for ordinary staffing decisions; update it through plugin maintenance when Pedro asks to change the lineup",
         "Run OpenAI employees as native Codex tasks and Claude employees as named sessions on the existing shared Chat, TradeInCode, or Avanza Control Remote Control server",
         "Treat a Remote Control server as a namespace and a named session as the employee; never create a per-employee server or LaunchAgent",
+        "For Claude employees, pass the exact employee title to both --remote-control and --name; never use a namespace or project label as the Remote Control title",
+        "State the configured model and effort in the opening instruction and verify them from runtime settings; never ask the employee to infer them",
         "Never substitute an OpenAI wrapper for an approved Claude model"
       ]
     },

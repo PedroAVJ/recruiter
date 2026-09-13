@@ -45,6 +45,31 @@ A server is a namespace and shared execution pool. A named session on that
 server is the employee. Never create a fourth server, a per-employee
 `LaunchAgent`, or a separate `claude remote-control` supervisor.
 
+### Launch or resume a Claude employee
+
+The positional value after `--remote-control` is the title shown on the Remote
+Control client. It is not the shared namespace name. Pass the exact employee
+title to both title flags:
+
+```sh
+claude --remote-control "<exact employee title>" \
+  --name "<exact employee title>" \
+  --model claude-fable-5-1 \
+  --effort medium \
+  --permission-mode auto
+```
+
+To resume an existing employee, add `--resume <current session UUID>` to that
+same command. The working directory and existing shared service determine the
+Chat, TradeInCode, or Avanza Control namespace. Never pass `Chat`, `Apps`, a
+project name, or a service label as the `--remote-control` value.
+
+Tell the employee its configured model and effort in the opening instruction.
+Do not ask the employee to infer either setting from its role, seniority, task,
+or prose prompt. Treat command arguments and runtime readback as the source of
+truth; the model's self-assessment is not verification. For example: `Your
+configured runtime is Claude Fable 5.1 at medium effort.`
+
 ### Discover an existing Claude employee
 
 Claude employees do not appear in the Codex task list. Discover them through
@@ -79,11 +104,15 @@ plugin, a role contract, or a source file.
 4. Keep a role contract in a stable subdirectory when useful, and explicitly
    tell the session to read and follow it. A subdirectory is employee context,
    not a server boundary.
-5. Pin the exact approved Claude model for that session without changing the
-   shared server's defaults or the user's global Claude default.
-6. Verify the shared service is running, the named session exists on it, its
-   displayed title is exact, and its spawned child command or backend
-   model-usage record names the approved model.
+5. Pass the exact employee title to both `--remote-control` and `--name`.
+6. Pin the exact approved Claude model and effort for that session without
+   changing the shared server's defaults or the user's global Claude default.
+7. State those configured values in the opening instruction; never ask the
+   employee to infer them.
+8. Verify the shared service is running, the named session exists on it, its
+   local and Remote Control titles are exact, and its spawned child command or
+   backend model-usage record names the approved model. Verify effort from the
+   command or runtime control, not from the employee's prose response.
 
 The three shared services prove only that the namespaces are available; they
 do not prove a particular employee session exists or uses its approved model.

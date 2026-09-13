@@ -9,5 +9,9 @@ uses Claude Fable 5.1, audio uses Gemini 3.8 Flash, and image uses GPT Image
 
 The Recruiter itself is `gpt-5.6-terra` at `medium` effort.
 
+Claude employee provisioning keeps the exact employee title identical in the
+local session and Remote Control client. Runtime model and effort come from the
+launch settings and readback, never from the employee guessing them.
+
 Staffing decisions remain with the Recruiter; executing or routing the
 selected work requires Pedro's explicit instruction.

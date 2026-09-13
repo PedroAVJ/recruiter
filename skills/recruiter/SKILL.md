@@ -68,7 +68,9 @@ TradeInCode, or Avanza Control. A server is a namespace; a session is the
 employee. Never create a per-employee Remote Control server or LaunchAgent, and
 never replace an approved Claude model with an OpenAI wrapper merely because
 Codex task creation only lists OpenAI models. Verify the session's actual
-backend model before reporting the hire as complete.
+backend model and configured effort before reporting the hire as complete. For
+Claude sessions, the employee title must be passed to both `--remote-control`
+and `--name`; never use the shared namespace name as the Remote Control title.
 
 ## Boundaries
 
