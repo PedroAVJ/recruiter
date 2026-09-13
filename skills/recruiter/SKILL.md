@@ -71,6 +71,8 @@ Codex task creation only lists OpenAI models. Verify the session's actual
 backend model and configured effort before reporting the hire as complete. For
 Claude sessions, the employee title must be passed to both `--remote-control`
 and `--name`; never use the shared namespace name as the Remote Control title.
+After resuming, verify the retained cloud session title and rename that session
+in place if the client preserved an older title.
 
 ## Boundaries
 

@@ -64,6 +64,12 @@ same command. The working directory and existing shared service determine the
 Chat, TradeInCode, or Avanza Control namespace. Never pass `Chat`, `Apps`, a
 project name, or a service label as the `--remote-control` value.
 
+Resuming can reconnect to an existing cloud session whose saved title predates
+the corrected command. The title arguments do not prove that retained cloud
+title changed. Open the returned `claude.ai/code/session_...` page, verify the
+visible title, and rename that same cloud session in place when it is stale.
+Do not create a replacement conversation merely to obtain the right title.
+
 Tell the employee its configured model and effort in the opening instruction.
 Do not ask the employee to infer either setting from its role, seniority, task,
 or prose prompt. Treat command arguments and runtime readback as the source of
@@ -109,7 +115,9 @@ plugin, a role contract, or a source file.
    changing the shared server's defaults or the user's global Claude default.
 7. State those configured values in the opening instruction; never ask the
    employee to infer them.
-8. Verify the shared service is running, the named session exists on it, its
+8. Open the returned Remote Control page and verify its retained cloud title;
+   if stale, rename that same session in place rather than creating a duplicate.
+9. Verify the shared service is running, the named session exists on it, its
    local and Remote Control titles are exact, and its spawned child command or
    backend model-usage record names the approved model. Verify effort from the
    command or runtime control, not from the employee's prose response.
