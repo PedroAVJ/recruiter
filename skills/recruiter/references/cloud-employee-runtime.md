@@ -54,7 +54,7 @@ server is the employee. Never create an additional server, a per-employee
 
 The two Claude entry points are different products:
 
-- `claude remote-control` runs a persistent, multi-session server. The three
+- `claude remote-control` runs a persistent, multi-session server. The four
   approved LaunchAgents already own these servers.
 - `claude --remote-control` starts one standalone interactive session. It does
   not join, register with, or become owned by an existing server, even when run
@@ -72,7 +72,9 @@ Create the employee through the signed-in Claude Code client instead:
    scope, and its configured model and effort.
 5. Rename that cloud session to the exact employee title when the derived title
    differs.
-6. Run `node scripts/audit-claude-runtime.mjs --title "<exact title>"
+6. Copy the `session_...` identifier from that Claude Code page's URL, then run
+   `node scripts/audit-claude-runtime.mjs --title "<exact title>"
+   --bridge-session-id <session_id>
    --namespace <chat|near|tradeincode|avanza-control> --model claude-fable-5-1`.
    The candidate must be an `sdk-cli` child whose parent PID is the selected
    shared server. An `entrypoint` of `cli`, a different parent PID, or a
@@ -100,15 +102,17 @@ the existing Claude CLI in this order:
    `.avanza-control` service.
 2. Read that service with `launchctl print gui/$(id -u)/<label>` to establish
    its PID and working directory.
-3. Run `node scripts/audit-claude-runtime.mjs --title "<exact title>"
-   --namespace <namespace> --model <model>` and require exactly one matching
-   shared-server child.
-4. Open that session from Claude Code and verify its visible title, environment,
+3. Open the matching visible session in Claude Code and copy the `session_...`
+   identifier from its URL.
+4. Run `node scripts/audit-claude-runtime.mjs --title "<exact title>"
+   --bridge-session-id <session_id> --namespace <namespace> --model <model>` and
+   require exactly one matching shared-server child.
+5. Verify that same Claude page shows its exact visible title, environment,
    model, and effort before routing work to it.
 
-The visible title and live namespace identify the employee. A session UUID is
-only a transient handle for the current CLI invocation: never store it in this
-plugin, a role contract, or a source file.
+The visible title and live namespace identify the employee. Use a session UUID
+only as a transient correlation handle for the current audit; never store it in
+this plugin, a role contract, or a source file.
 
 ### Registered Claude employee
 

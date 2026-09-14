@@ -8,7 +8,7 @@ test("manifests and package stay version aligned", () => {
   const codex = JSON.parse(readFileSync(new URL("../.codex-plugin/plugin.json", import.meta.url)));
   const claude = JSON.parse(readFileSync(new URL("../.claude-plugin/plugin.json", import.meta.url)));
   const pkg = JSON.parse(readFileSync(new URL("../package.json", import.meta.url)));
-  assert.equal(codex.version, "0.6.6");
+  assert.equal(codex.version, "0.6.7");
   assert.equal(claude.version, codex.version);
   assert.equal(pkg.version, codex.version);
 });
@@ -30,6 +30,8 @@ test("audit accepts the Near project namespace", () => {
   const expected = parseArgs([
     "--title",
     "Employee",
+    "--bridge-session-id",
+    "session_01Near",
     "--namespace",
     "near",
     "--model",
@@ -42,6 +44,8 @@ test("audit accepts one shared child and rejects standalone duplicates", () => {
   const expected = parseArgs([
     "--title",
     "Employee",
+    "--bridge-session-id",
+    "session_01Employee",
     "--namespace",
     "chat",
     "--model",
@@ -49,6 +53,7 @@ test("audit accepts one shared child and rejects standalone duplicates", () => {
   ]);
   const server = { namespace: "chat", pid: 100 };
   const shared = {
+    bridgeSessionId: "session_01Employee",
     command: "claude --print --model claude-fable-5-1",
     entrypoint: "sdk-cli",
     name: "Employee",
@@ -63,17 +68,19 @@ test("audit accepts one shared child and rejects standalone duplicates", () => {
   );
 });
 
-test("audit correlates Claude's spaced local emoji title with its joined cloud title", () => {
+test("audit correlates a renamed cloud session with its derived local process name", () => {
   const expected = {
+    bridgeSessionId: "session_01Employee",
     model: "claude-fable-5-1",
     namespace: "chat",
     title: "👨🏻‍💼 Technical Product Manager",
   };
   const server = { namespace: "chat", pid: 100 };
   const candidate = {
+    bridgeSessionId: "session_01Employee",
     command: "claude --print --model claude-fable-5-1",
     entrypoint: "sdk-cli",
-    name: "👨🏻 💼 Technical Product Manager",
+    name: "apps-73",
     pid: 101,
     ppid: 100,
   };

@@ -17,15 +17,16 @@ export function parseArgs(argv) {
   for (let index = 0; index < argv.length; index += 2) {
     const key = argv[index];
     const value = argv[index + 1];
-    if (!["--title", "--namespace", "--model"].includes(key) || !value) {
-      throw new Error("Usage: audit-claude-runtime.mjs --title <title> --namespace <namespace> --model <model>");
+    if (!["--title", "--bridge-session-id", "--namespace", "--model"].includes(key) || !value) {
+      throw new Error("Usage: audit-claude-runtime.mjs --title <title> --bridge-session-id <session_id> --namespace <namespace> --model <model>");
     }
     parsed[key.slice(2)] = value;
   }
-  if (!parsed.title || !parsed.namespace || !parsed.model || !labels[parsed.namespace]) {
-    throw new Error("Usage: audit-claude-runtime.mjs --title <title> --namespace <chat|near|tradeincode|avanza-control> --model <model>");
+  if (!parsed.title || !/^session_[A-Za-z0-9]+$/.test(parsed["bridge-session-id"] ?? "") || !parsed.namespace || !parsed.model || !labels[parsed.namespace]) {
+    throw new Error("Usage: audit-claude-runtime.mjs --title <title> --bridge-session-id <session_id> --namespace <chat|near|tradeincode|avanza-control> --model <model>");
   }
-  return parsed;
+  const { ["bridge-session-id"]: bridgeSessionId, ...expected } = parsed;
+  return { ...expected, bridgeSessionId };
 }
 
 function command(name, args) {
@@ -71,21 +72,17 @@ function sessions() {
     });
 }
 
-function titleKey(value) {
-  return value.normalize("NFC").replace(/[\s\u200d\ufe0f]/gu, "");
-}
-
 export function evaluate(expected, selectedService, candidates) {
-  // Claude's local process registry may render emoji joiners as spaces. Use a
-  // compact key for process correlation; the live client remains authoritative
-  // for the exact visible title.
-  const matchingTitle = candidates.filter(
-    (session) => titleKey(session.name) === titleKey(expected.title),
+  // A shared child keeps its derived local process name after the cloud session
+  // is renamed. Correlate the current Claude page by its bridge session ID;
+  // the live client remains authoritative for the exact visible title.
+  const matchingSession = candidates.filter(
+    (session) => session.bridgeSessionId === expected.bridgeSessionId,
   );
-  const selected = matchingTitle.filter(
+  const selected = matchingSession.filter(
     (session) => classify(session, selectedService, session.ppid) === "shared",
   );
-  const standalone = matchingTitle.filter((session) => session.entrypoint === "cli");
+  const standalone = matchingSession.filter((session) => session.entrypoint === "cli");
   const modelFailures = selected.filter(
     (session) => !session.command.includes(`--model ${expected.model}`),
   );
