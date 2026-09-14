@@ -8,7 +8,7 @@ test("manifests and package stay version aligned", () => {
   const codex = JSON.parse(readFileSync(new URL("../.codex-plugin/plugin.json", import.meta.url)));
   const claude = JSON.parse(readFileSync(new URL("../.claude-plugin/plugin.json", import.meta.url)));
   const pkg = JSON.parse(readFileSync(new URL("../package.json", import.meta.url)));
-  assert.equal(codex.version, "0.6.5");
+  assert.equal(codex.version, "0.6.6");
   assert.equal(claude.version, codex.version);
   assert.equal(pkg.version, codex.version);
 });
@@ -21,6 +21,21 @@ test("runtime contract distinguishes the standalone flag from shared servers", (
   assert.match(contract, /`claude --remote-control` starts one standalone/);
   assert.match(contract, /`sdk-cli` child/);
   assert.match(contract, /Never use it to provision an employee/);
+  assert.match(contract, /Chat for non-project employees/);
+  assert.match(contract, /Near for Near work/);
+  assert.match(contract, /Never use Chat as a fallback for a project employee/);
+});
+
+test("audit accepts the Near project namespace", () => {
+  const expected = parseArgs([
+    "--title",
+    "Employee",
+    "--namespace",
+    "near",
+    "--model",
+    "claude-fable-5-1",
+  ]);
+  assert.equal(expected.namespace, "near");
 });
 
 test("audit accepts one shared child and rejects standalone duplicates", () => {

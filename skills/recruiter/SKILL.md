@@ -63,8 +63,9 @@ After approving a hire, and only when Pedro explicitly asks to activate it,
 bind the employee to the provider that owns the chosen model by following
 [the cloud employee runtime rules](references/cloud-employee-runtime.md).
 OpenAI employees run as Codex tasks. Claude employees run as named sessions on
-one of the three existing shared Claude Remote Control servers: Chat,
-TradeInCode, or Avanza Control. A server is a namespace; a session is the
+one of the four existing shared Claude Remote Control servers: Chat, Near,
+TradeInCode, or Avanza Control. Chat is only for non-project employees; every
+project employee must use the server for its actual project. A server is a namespace; a session is the
 employee. Never create a per-employee Remote Control server or LaunchAgent, and
 never replace an approved Claude model with an OpenAI wrapper merely because
 Codex task creation only lists OpenAI models. Verify the session's actual

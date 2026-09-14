@@ -7,6 +7,7 @@ import { join } from "node:path";
 
 const labels = {
   chat: "com.pedro.claude-remote-control.chat",
+  near: "com.pedro.claude-remote-control.near",
   tradeincode: "com.pedro.claude-remote-control.tradeincode",
   "avanza-control": "com.pedro.claude-remote-control.avanza-control",
 };
@@ -22,7 +23,7 @@ export function parseArgs(argv) {
     parsed[key.slice(2)] = value;
   }
   if (!parsed.title || !parsed.namespace || !parsed.model || !labels[parsed.namespace]) {
-    throw new Error("Usage: audit-claude-runtime.mjs --title <title> --namespace <chat|tradeincode|avanza-control> --model <model>");
+    throw new Error("Usage: audit-claude-runtime.mjs --title <title> --namespace <chat|near|tradeincode|avanza-control> --model <model>");
   }
   return parsed;
 }

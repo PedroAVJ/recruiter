@@ -35,14 +35,19 @@ on the selected Anthropic cloud model.
 For a Claude Fable 5.1 employee selected by the human text-verification picker,
 pin `medium` reasoning effort.
 
-Exactly three shared Remote Control servers provide the persistent namespaces:
+Exactly four shared Remote Control servers provide the persistent namespaces:
 
 - Chat for non-project employees
+- Near for Near work (the repository is still stored at `Developer/PedroAVJ/Apps`)
 - TradeInCode for TradeInCode work
 - Avanza Control for Avanza Control work
 
+Never use Chat as a fallback for a project employee. A missing project server
+means provisioning is incomplete; create or repair the project namespace before
+creating the employee session.
+
 A server is a namespace and shared execution pool. A named session on that
-server is the employee. Never create a fourth server, a per-employee
+server is the employee. Never create an additional server, a per-employee
 `LaunchAgent`, or a separate `claude remote-control` supervisor.
 
 ### Create a Claude employee on a shared server
@@ -68,7 +73,7 @@ Create the employee through the signed-in Claude Code client instead:
 5. Rename that cloud session to the exact employee title when the derived title
    differs.
 6. Run `node scripts/audit-claude-runtime.mjs --title "<exact title>"
-   --namespace <chat|tradeincode|avanza-control> --model claude-fable-5-1`.
+   --namespace <chat|near|tradeincode|avanza-control> --model claude-fable-5-1`.
    The candidate must be an `sdk-cli` child whose parent PID is the selected
    shared server. An `entrypoint` of `cli`, a different parent PID, or a
    `claude --remote-control` process is a failed provisioning attempt.
@@ -77,10 +82,13 @@ Create the employee through the signed-in Claude Code client instead:
 
 A standalone conversation cannot be migrated into a running multi-session
 server by resuming it with `claude --remote-control`; that only creates another
-standalone process. For an authorized repair, preserve the conversation,
-create and verify one canonical replacement through the shared server, then
-stop the standalone process and label its cloud session as retired. Never
-delete the conversation merely to clean the session list.
+standalone process. Never replace a conversation with user-authored project
+history by an empty session in Chat. For an authorized repair, first restore the
+original transcript to its project directory and keep that exact conversation
+reachable. Add or repair the matching shared project server for future sessions.
+Only retire a standalone conversation after Pedro explicitly accepts a verified
+history-preserving replacement. Never delete the conversation merely to clean
+the session list.
 
 ### Discover an existing Claude employee
 
@@ -88,7 +96,7 @@ Claude employees do not appear in the Codex task list. Discover them through
 the existing Claude CLI in this order:
 
 1. List the live namespaces with `launchctl list` and identify the matching
-   `com.pedro.claude-remote-control.chat`, `.tradeincode`, or
+   `com.pedro.claude-remote-control.chat`, `.near`, `.tradeincode`, or
    `.avanza-control` service.
 2. Read that service with `launchctl print gui/$(id -u)/<label>` to establish
    its PID and working directory.
@@ -109,7 +117,7 @@ plugin, a role contract, or a source file.
   for AI-employee titles; it recommends mappings and does not alter plugins or
   employee roles on its own.
 
-1. Discover the three live shared services with `launchctl`; do not rely on a
+1. Discover the four live shared services with `launchctl`; do not rely on a
    stale PID or cached session identifier.
 2. Choose the existing server whose namespace owns the employee's work.
 3. Create one named session from the Claude client after selecting that server's
@@ -128,7 +136,7 @@ plugin, a role contract, or a source file.
    server, the exact title, and the approved model. Reject standalone `cli`
    sessions even when they are reachable from Claude Code.
 
-The three shared services prove only that the namespaces are available; they
+The four shared services prove only that the namespaces are available; they
 do not prove a particular employee session exists or uses its approved model.
 Do not hardcode a session ID, access token, port, PID, or transient cloud work
 ID into the plugin or a role contract.

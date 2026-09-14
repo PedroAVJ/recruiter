@@ -10,8 +10,10 @@ uses Claude Fable 5.1, audio uses Gemini 3.8 Flash, and image uses GPT Image
 The Recruiter itself is `gpt-5.6-terra` at `medium` effort.
 
 Claude employees are created by the existing shared Remote Control server for
-their namespace. The Recruiter never launches a standalone
-`claude --remote-control` process or a per-employee supervisor. Runtime model,
+their namespace. Chat is only for projectless employees; Near, TradeInCode,
+and Avanza Control employees stay in their matching project namespaces. The
+Recruiter never launches a standalone `claude --remote-control` process or a
+per-employee supervisor. Runtime model,
 effort, namespace, and title are verified from the spawned process and live
 Claude client before a hire is reported complete.
 
