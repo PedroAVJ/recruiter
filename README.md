@@ -9,10 +9,11 @@ uses Claude Fable 5.1, audio uses Gemini 3.8 Flash, and image uses GPT Image
 
 The Recruiter itself is `gpt-5.6-terra` at `medium` effort.
 
-Claude employee provisioning keeps the exact employee title identical in the
-local session and Remote Control client. Runtime model and effort come from the
-launch settings and readback, never from the employee guessing them. Resumed
-cloud sessions are checked for a retained stale title and renamed in place.
+Claude employees are created by the existing shared Remote Control server for
+their namespace. The Recruiter never launches a standalone
+`claude --remote-control` process or a per-employee supervisor. Runtime model,
+effort, namespace, and title are verified from the spawned process and live
+Claude client before a hire is reported complete.
 
 Staffing decisions remain with the Recruiter; executing or routing the
 selected work requires Pedro's explicit instruction.

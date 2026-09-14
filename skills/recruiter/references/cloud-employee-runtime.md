@@ -45,36 +45,42 @@ A server is a namespace and shared execution pool. A named session on that
 server is the employee. Never create a fourth server, a per-employee
 `LaunchAgent`, or a separate `claude remote-control` supervisor.
 
-### Launch or resume a Claude employee
+### Create a Claude employee on a shared server
 
-The positional value after `--remote-control` is the title shown on the Remote
-Control client. It is not the shared namespace name. Pass the exact employee
-title to both title flags:
+The two Claude entry points are different products:
 
-```sh
-claude --remote-control "<exact employee title>" \
-  --name "<exact employee title>" \
-  --model claude-fable-5-1 \
-  --effort medium \
-  --permission-mode auto
-```
+- `claude remote-control` runs a persistent, multi-session server. The three
+  approved LaunchAgents already own these servers.
+- `claude --remote-control` starts one standalone interactive session. It does
+  not join, register with, or become owned by an existing server, even when run
+  from the same directory. Never use it to provision an employee.
 
-To resume an existing employee, add `--resume <current session UUID>` to that
-same command. The working directory and existing shared service determine the
-Chat, TradeInCode, or Avanza Control namespace. Never pass `Chat`, `Apps`, a
-project name, or a service label as the `--remote-control` value.
+Create the employee through the signed-in Claude Code client instead:
 
-Resuming can reconnect to an existing cloud session whose saved title predates
-the corrected command. The title arguments do not prove that retained cloud
-title changed. Open the returned `claude.ai/code/session_...` page, verify the
-visible title, and rename that same cloud session in place when it is stale.
-Do not create a replacement conversation merely to obtain the right title.
+1. Verify the selected shared LaunchAgent is running and record its PID and
+   working directory.
+2. Open Claude Code in the existing signed-in Chrome profile. In the new-session
+   composer, select the environment backed by that shared server.
+3. Set the exact approved model and effort in the client controls before the
+   first prompt.
+4. Send the opening instruction naming the role, its installed role plugin, its
+   scope, and its configured model and effort.
+5. Rename that cloud session to the exact employee title when the derived title
+   differs.
+6. Run `node scripts/audit-claude-runtime.mjs --title "<exact title>"
+   --namespace <chat|tradeincode|avanza-control> --model claude-fable-5-1`.
+   The candidate must be an `sdk-cli` child whose parent PID is the selected
+   shared server. An `entrypoint` of `cli`, a different parent PID, or a
+   `claude --remote-control` process is a failed provisioning attempt.
+7. Verify the visible Claude page shows the exact title, selected environment,
+   model, and effort. A model's prose claim is not verification.
 
-Tell the employee its configured model and effort in the opening instruction.
-Do not ask the employee to infer either setting from its role, seniority, task,
-or prose prompt. Treat command arguments and runtime readback as the source of
-truth; the model's self-assessment is not verification. For example: `Your
-configured runtime is Claude Fable 5.1 at medium effort.`
+A standalone conversation cannot be migrated into a running multi-session
+server by resuming it with `claude --remote-control`; that only creates another
+standalone process. For an authorized repair, preserve the conversation,
+create and verify one canonical replacement through the shared server, then
+stop the standalone process and label its cloud session as retired. Never
+delete the conversation merely to clean the session list.
 
 ### Discover an existing Claude employee
 
@@ -85,12 +91,12 @@ the existing Claude CLI in this order:
    `com.pedro.claude-remote-control.chat`, `.tradeincode`, or
    `.avanza-control` service.
 2. Read that service with `launchctl print gui/$(id -u)/<label>` to establish
-   its working directory. From that directory, run `claude --resume` and use
-   the CLI session picker to find the exact visible employee title.
-3. Once the picker provides the selected session's current UUID, resume it
-   non-interactively with `claude --print --output-format json --resume <uuid>`
-   for the requested work. Verify the returned `modelUsage` names the approved
-   backend model.
+   its PID and working directory.
+3. Run `node scripts/audit-claude-runtime.mjs --title "<exact title>"
+   --namespace <namespace> --model <model>` and require exactly one matching
+   shared-server child.
+4. Open that session from Claude Code and verify its visible title, environment,
+   model, and effort before routing work to it.
 
 The visible title and live namespace identify the employee. A session UUID is
 only a transient handle for the current CLI invocation: never store it in this
@@ -106,21 +112,21 @@ plugin, a role contract, or a source file.
 1. Discover the three live shared services with `launchctl`; do not rely on a
    stale PID or cached session identifier.
 2. Choose the existing server whose namespace owns the employee's work.
-3. Create a named session on that server with the exact visible employee title.
+3. Create one named session from the Claude client after selecting that server's
+   environment. Do not run `claude --remote-control`.
 4. Keep a role contract in a stable subdirectory when useful, and explicitly
    tell the session to read and follow it. A subdirectory is employee context,
    not a server boundary.
-5. Pass the exact employee title to both `--remote-control` and `--name`.
-6. Pin the exact approved Claude model and effort for that session without
+5. Set the exact employee title in the cloud session after creation.
+6. Pin the exact approved Claude model and effort in the client before the
+   first prompt without
    changing the shared server's defaults or the user's global Claude default.
 7. State those configured values in the opening instruction; never ask the
    employee to infer them.
-8. Open the returned Remote Control page and verify its retained cloud title;
-   if stale, rename that same session in place rather than creating a duplicate.
-9. Verify the shared service is running, the named session exists on it, its
-   local and Remote Control titles are exact, and its spawned child command or
-   backend model-usage record names the approved model. Verify effort from the
-   command or runtime control, not from the employee's prose response.
+8. Verify the cloud page's title, environment, model, and effort.
+9. Run the runtime audit and require one `sdk-cli` child of the selected shared
+   server, the exact title, and the approved model. Reject standalone `cli`
+   sessions even when they are reachable from Claude Code.
 
 The three shared services prove only that the namespaces are available; they
 do not prove a particular employee session exists or uses its approved model.

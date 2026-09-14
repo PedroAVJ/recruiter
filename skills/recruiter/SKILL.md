@@ -59,8 +59,8 @@ guidance; ordinary staffing decisions do not browse external model pages. If
 Pedro asks to update the lineup itself, update the embedded guidance as plugin
 maintenance before using it.
 
-After approving a hire, bind the employee to the provider that owns the chosen
-model by following
+After approving a hire, and only when Pedro explicitly asks to activate it,
+bind the employee to the provider that owns the chosen model by following
 [the cloud employee runtime rules](references/cloud-employee-runtime.md).
 OpenAI employees run as Codex tasks. Claude employees run as named sessions on
 one of the three existing shared Claude Remote Control servers: Chat,
@@ -68,11 +68,13 @@ TradeInCode, or Avanza Control. A server is a namespace; a session is the
 employee. Never create a per-employee Remote Control server or LaunchAgent, and
 never replace an approved Claude model with an OpenAI wrapper merely because
 Codex task creation only lists OpenAI models. Verify the session's actual
-backend model and configured effort before reporting the hire as complete. For
-Claude sessions, the employee title must be passed to both `--remote-control`
-and `--name`; never use the shared namespace name as the Remote Control title.
-After resuming, verify the retained cloud session title and rename that session
-in place if the client preserved an older title.
+backend model, configured effort, namespace parent, and visible title before
+reporting the hire as complete. Create the employee from the Claude client
+after selecting the existing shared environment. Never run the similarly named
+`claude --remote-control` flag: it starts a standalone interactive process and
+does not attach an employee to a running shared server. Reject any candidate
+whose live session record is not an `sdk-cli` child of the selected shared
+server.
 
 ## Boundaries
 
